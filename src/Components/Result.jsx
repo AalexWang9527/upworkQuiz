@@ -1,9 +1,10 @@
 import { useHistory } from "react-router-dom";
 
 export default function Result(props) {
-  const hero = useHistory();
-  const mypara = hero.location.state;
+  const history = useHistory();
+  const mypara = history.location.state;
   let data = mypara.userDataCopy;
+  console.log(data);
   // console.log(mypara)
   return (
     <div className="result-container">
@@ -35,6 +36,9 @@ export default function Result(props) {
           );
         })}
       </table>
+      <button className="restart-btn" onClick={() => history.push("/quiz")}>
+        Restart Quiz
+      </button>
     </div>
   );
 }
