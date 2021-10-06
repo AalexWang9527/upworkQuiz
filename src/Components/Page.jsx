@@ -40,14 +40,26 @@ function Page(props) {
       }
     } else {
       setTimeout(() => setWidthe(100), 500);
-      setTimeout(
-        () => history.push({ pathname: "/result", state: { userDataCopy } }),
-        500
-      );
       if (props.questionObj[currentIndex].correctOption === index) {
         setScore(score + 1);
+        setTimeout(
+          () =>
+            history.push({
+              pathname: "/result",
+              state: { userDataCopy, score: score + 1 },
+            }),
+          500
+        );
         return "green";
       } else {
+        setTimeout(
+          () =>
+            history.push({
+              pathname: "/result",
+              state: { userDataCopy, score },
+            }),
+          500
+        );
         return "red";
       }
     }
@@ -107,8 +119,6 @@ function Page(props) {
                 widthe > 70 ? "green" : widthe > 30 ? "orange" : "red",
             }}
           ></div>
-
-          <div className="score">Score : {score}</div>
 
           <Question value={props.questionObj[currentIndex].question} />
 

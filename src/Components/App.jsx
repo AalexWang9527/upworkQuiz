@@ -11,17 +11,19 @@ export default function App() {
     { ...generateNewQuestionAnswerPair() },
     { ...generateNewQuestionAnswerPair() },
   ];
+  console.log(questionObj);
   function solve(arr) {
     let res = 0;
     arr.forEach((elem, index) => {
       if (index % 2 === 0) {
         if (index === 0) res += elem;
-        else if (index !== 4) {
+        else {
           if (arr[index - 1] === "+") res += elem;
           else res -= elem;
         }
       }
     });
+    console.log(arr, res);
     return res;
   }
   function generateNewQuestionAnswerPair() {
@@ -47,6 +49,7 @@ export default function App() {
       question: question,
       answers: options,
       correctOption: correctOption,
+      correctAnswer: answer,
     };
   }
   return (

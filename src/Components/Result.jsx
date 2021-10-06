@@ -9,6 +9,8 @@ export default function Result(props) {
   return (
     <div className="result-container">
       <h1>Results</h1>
+    <div className="score">Score : {mypara.score}</div>
+
       <table className="table">
         <tr>
           <th>Question</th>
