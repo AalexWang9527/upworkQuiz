@@ -32,7 +32,7 @@ export default function Result(props) {
   }));
 
   return (
-    <div className="result-container">
+    <div className="container" style={{ gap: "20px" }}>
       <h1>Results</h1>
       <div className="score">{"Score: " + mypara.score}</div>
 
