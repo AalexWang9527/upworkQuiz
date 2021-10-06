@@ -1,14 +1,15 @@
+import { Button } from "@mui/material";
 import { useHistory } from "react-router-dom";
 
 export default function Home() {
   const history = useHistory();
 
   return (
-    <div className="result-container">
-      <h1>Let's Calculate!</h1>
-      <button className="start-btn" onClick={() => history.push("/quiz")}>
+    <div className="container">
+      <p style={{fontSize:"50px"}}>Let's Calculate!</p>
+      <Button className="start-btn" onClick={() => history.push("/quiz")} variant="contained" style={{padding:"15px"}}>
         Start Quiz
-      </button>
+      </Button>
     </div>
   );
 }

@@ -34,9 +34,9 @@ function Page(props) {
       setTimeout(() => setCurrentIndex(currentIndex + 1), 500);
       if (props.questionObj[currentIndex].correctOption === index) {
         setScore(score + 1);
-        return "green";
+        return "#b9f334";
       } else {
-        return "red";
+        return "#f32c1d";
       }
     } else {
       setTimeout(() => setWidthe(100), 500);
@@ -60,7 +60,7 @@ function Page(props) {
             }),
           500
         );
-        return "red";
+        return "#f32c1d";
       }
     }
   }
@@ -116,7 +116,7 @@ function Page(props) {
             style={{
               width: widthe + "%",
               backgroundColor:
-                widthe > 70 ? "green" : widthe > 30 ? "orange" : "red",
+                widthe > 70 ? "#b9f334" : widthe > 30 ? "orange" : "#f32c1d",
             }}
           ></div>
 
