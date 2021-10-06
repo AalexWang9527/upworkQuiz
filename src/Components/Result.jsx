@@ -36,7 +36,7 @@ export default function Result(props) {
       <h1>Results</h1>
       <div className="score">{"Score: " + mypara.score}</div>
 
-      <Table sx={{ width: 500 }} aria-label="customized table">
+      <Table sx={{ width:"80%"}} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell align="center">Questions</StyledTableCell>
