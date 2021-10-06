@@ -120,7 +120,7 @@ function Page(props) {
             }}
           ></div>
 
-          <Question value={props.questionObj[currentIndex].question} />
+         
 
           <div className="options">
             {props.questionObj[currentIndex].answers.map((choice, index) => {
@@ -134,6 +134,8 @@ function Page(props) {
               );
             })}
           </div>
+
+          <Question value={props.questionObj[currentIndex].question} />
         </div>
       </>
     )
