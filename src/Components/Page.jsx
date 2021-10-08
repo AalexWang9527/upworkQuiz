@@ -132,7 +132,7 @@ function Page() {
                       value={choice}
                       index={index}
                       clickHandler={checkAns}
-                      key={currentIndex + "" + index*Math.random()}
+                      key={currentIndex + "" + index}
                     />
                   );
                 } else return <></>;
