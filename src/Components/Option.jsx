@@ -16,6 +16,7 @@ export default function Option(props) {
           key={props.key}
           variant="contained"
           style={{padding:"15px 30px",fontSize:"20px",letterSpacing:"2px"}}
+          disabled={props.disabled}
         >
           {props.value}
         </Button>

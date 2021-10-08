@@ -1,5 +1,6 @@
 import { useHistory } from "react-router-dom";
 import * as React from "react";
+import { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,10 +8,12 @@ import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { Button } from "@mui/material";
+
 export default function Result(props) {
   const history = useHistory();
   const mypara = history.location.state;
   let data = mypara.userDataCopy;
+  let [loading, setLoading] = useState(true);
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -69,57 +72,81 @@ export default function Result(props) {
       correctAnswer: answer,
     };
   }
-function saveNewSet(){
-  let questionObj = [
-    { ...generateNewQuestionAnswerPair() },
-    { ...generateNewQuestionAnswerPair() },
-    { ...generateNewQuestionAnswerPair() },
-    { ...generateNewQuestionAnswerPair() },
-    { ...generateNewQuestionAnswerPair() },
-  ];
-  localStorage.clear();
-  localStorage.setItem('questionObj',JSON.stringify(questionObj))
-}
-  return (
-    <div className="container" style={{ gap: "20px" }}>
-      <h1>Results</h1>
-      <div className="score">{"Score: " + mypara.score}</div>
 
-      <Table sx={{ width:"80%"}} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell align="center">Questions</StyledTableCell>
-            <StyledTableCell align="center">Correct Answers</StyledTableCell>
-            <StyledTableCell align="center">Your Answer</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map((elem) => (
-            <StyledTableRow key={elem[0]}>
-              <StyledTableCell component="th" scope="row" align="center">
-                {elem[0]}
-              </StyledTableCell>
-              <StyledTableCell align="center">{elem[3]}</StyledTableCell>
-              <StyledTableCell
-                style={{
-                  backgroundColor:
-                    elem[2] === null
-                      ? "transparent"
-                      : elem[1] === elem[2]
-                      ? "#38b801"
-                      : "#f32c1d",
-                }}
-                align="center"
-              >
-                {elem[4]}
-              </StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-      <Button onClick={() =>{saveNewSet(); history.push("/quiz")}} variant="contained">
-        Restart Game
-      </Button>
-    </div>
-  );
+  function saveNewSet() {
+    let questionObj = [
+      { ...generateNewQuestionAnswerPair() },
+      { ...generateNewQuestionAnswerPair() },
+      { ...generateNewQuestionAnswerPair() },
+      { ...generateNewQuestionAnswerPair() },
+      { ...generateNewQuestionAnswerPair() },
+    ];
+    localStorage.clear();
+    localStorage.setItem("questionObj", JSON.stringify(questionObj));
+  }
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1500);
+  }, []);
+  if (!loading) {
+    return (
+      <div className="container" style={{ gap: "20px" }}>
+        <h1>Results</h1>
+        <div className="score">{"Score: " + mypara.score}</div>
+
+        <Table sx={{ width: "80%" }} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell align="center">Questions</StyledTableCell>
+              <StyledTableCell align="center">Correct Answers</StyledTableCell>
+              <StyledTableCell align="center">Your Answer</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data.map((elem) => (
+              <StyledTableRow key={elem[0]}>
+                <StyledTableCell component="th" scope="row" align="center">
+                  {elem[0]}
+                </StyledTableCell>
+                <StyledTableCell align="center">{elem[3]}</StyledTableCell>
+                <StyledTableCell
+                  style={{
+                    backgroundColor:
+                      elem[2] === null
+                        ? "transparent"
+                        : elem[1] === elem[2]
+                        ? "#38b801"
+                        : "#f32c1d",
+                  }}
+                  align="center"
+                >
+                  {elem[4]}
+                </StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+        <Button
+          onClick={() => {
+            saveNewSet();
+            history.push("/quiz");
+          }}
+          variant="contained"
+        >
+          Restart Game
+        </Button>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <>
+        <div className="loading-body">
+          <div className="loading-div"></div>
+          <div className="loading-div"></div>
+          <div className="loading-div"></div>
+        </div>
+      </>
+    );
+  }
 }

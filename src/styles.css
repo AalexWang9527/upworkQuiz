@@ -17,11 +17,15 @@
   justify-content: center;
   gap: 50px;
   color: black;
+  position:relative;
+  overflow:hidden
 }
 
 .question {
   font-size: 70px;
   color: black;
+  overflow:hidden
+
 }
 .score {
   font-size: 40px;
@@ -30,6 +34,8 @@
 .options {
   display: flex;
   gap: 25px;
+  overflow:hidden
+
 }
 
 table,
@@ -51,11 +57,11 @@ table {
   display: flex;
   justify-self: left;
   align-self: flex-start;
+  transition: width linear 50ms;
+  overflow:hidden
+
 }
-.buttonDiv {
-  display: flex;
-  gapp: 20px;
-}
+
 
 @media only screen and (max-width: 600px) {
   .question {
@@ -67,5 +73,40 @@ table {
   }
   .container {
     overflow-y: scroll;
+  }
+}
+
+
+.loading-body {
+  margin: 0;
+  background: white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-div {
+  width: 0.875rem;
+  height: 5rem;
+  background: lightgreen;
+  margin-left: 0.875rem;
+  animation: bar-loading 1s infinite alternate;
+}
+
+.loading-div:nth-child(2) {
+  animation-delay: -0.2s;
+}
+
+.loading-div:nth-child(3) {
+  animation-delay: -0.4s;
+}
+
+@keyframes bar-loading {
+  0% {
+    transform: scaleY(0.5);
+  }
+  100% {
+    transform: scaleY(1);
   }
 }
