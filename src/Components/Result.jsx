@@ -8,6 +8,7 @@ import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { Button } from "@mui/material";
+import Confetti from "react-confetti";
 
 export default function Result(props) {
   const history = useHistory();
@@ -134,6 +135,8 @@ export default function Result(props) {
         >
           Restart Game
         </Button>
+        <Confetti startVelocity="190"/>
+
       </div>
     );
   }

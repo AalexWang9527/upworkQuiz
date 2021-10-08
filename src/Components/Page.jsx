@@ -2,7 +2,6 @@ import Question from "./Question";
 import Option from "./Option";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-
 function Page() {
   let intervalId;
   let [score, setScore] = useState(0);
@@ -102,7 +101,7 @@ function Page() {
       }
 
       // eslint-disable-next-line
-      intervalId = setInterval(() => setWidthe(widthe - 0.1), 15);
+      intervalId = setInterval(() => setWidthe(widthe - 0.1), 20);
 
       return () => clearInterval(intervalId);
     },
@@ -133,7 +132,7 @@ function Page() {
                       value={choice}
                       index={index}
                       clickHandler={checkAns}
-                      key={currentIndex + "" + index}
+                      key={currentIndex + "" + index*Math.random()}
                     />
                   );
                 } else return <></>;
